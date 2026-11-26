@@ -1,0 +1,286 @@
+# How tailrocks works with taskrock. `taskrock setup tailrocks` makes GitHub match this file.
+# The format is described in docs/setup.md of tailrocks/taskrock.
+version = 1
+
+[routing]
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+visibility = "restricted"
+
+[[routing.subagent]]
+name = "tailrocks-accessibility-auditor"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["review"]
+
+[[routing.subagent]]
+name = "tailrocks-architect"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-cicd-engineer"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-code-reviewer"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["review"]
+
+[[routing.subagent]]
+name = "tailrocks-debugger"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-design-director"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-docs-researcher"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-docs-writer"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-frontend-engineer"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-locator"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-mechanic"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-perf-engineer"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-qa-engineer"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-sandbox-engineer"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-security-reviewer"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["review"]
+
+[[routing.subagent]]
+name = "tailrocks-systems-engineer"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-test-reviewer"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["review"]
+
+[[routing.subagent]]
+name = "tailrocks-ux-specialist"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["build", "review"]
+
+[[routing.subagent]]
+name = "tailrocks-verifier"
+runtimes = ["claude", "codex", "agy", "muse", "grok"]
+can = ["review"]
+
+[[routing.model]]
+name = "claude-haiku-5-5"
+runtimes = ["claude"]
+efforts = ["low", "medium", "high", "xhigh", "max"]
+use = "Mechanical work: docs, renames, config, tests that follow an existing pattern."
+
+[[routing.model]]
+name = "claude-sonnet-5-5"
+runtimes = ["claude"]
+efforts = ["low", "medium", "high", "xhigh", "max"]
+use = "The default builder."
+
+[[routing.model]]
+name = "claude-opus-5-5"
+runtimes = ["claude"]
+efforts = ["low", "medium", "high", "xhigh", "max"]
+use = "Rare as a builder: only a design-heavy or cross-module task, with the reason in the plan. The default reviewer."
+
+[[routing.model]]
+name = "muse-spark-1.3"
+runtimes = ["muse"]
+efforts = ["minimal", "low", "medium", "high", "xhigh", "max"]
+use = "Tasks run in Muse Code."
+
+[[routing.model]]
+name = "muse-ember-1.0"
+runtimes = ["muse"]
+efforts = ["minimal", "low", "medium", "high", "xhigh", "max"]
+use = "Tasks run in Muse Code."
+
+[[routing.model]]
+name = "muse-wonder-1.0"
+runtimes = ["muse"]
+efforts = ["minimal", "low", "medium", "high", "xhigh", "max"]
+use = "Tasks run in Muse Code."
+
+[[routing.model]]
+name = "muse-wonder-full-1.0"
+runtimes = ["muse"]
+efforts = ["minimal", "low", "medium", "high", "xhigh", "max"]
+use = "Tasks run in Muse Code."
+
+[review]
+max_rounds = 3
+
+[[issue_type]]
+name = "Initiative"
+file = ["Outcome", "Why", "Not yet specified", "Out of scope", "Done when"]
+build = ["Outcome", "Why", "Not yet specified", "Out of scope", "Done when"]
+checklist = ["Done when"]
+
+[[issue_type]]
+name = "Epic"
+file = ["Outcome", "Decisions already made", "Not yet specified", "Out of scope", "Done when"]
+build = ["Outcome", "Decisions already made", "Not yet specified", "Out of scope", "Done when"]
+checklist = ["Done when"]
+
+[[issue_type]]
+name = "Task"
+file = ["Outcome", "Decisions already made", "Steps", "Done when", "Out of scope"]
+build = ["Outcome", "Decisions already made", "Steps", "Done when", "Out of scope"]
+checklist = ["Done when"]
+
+[[issue_type]]
+name = "Bug"
+file = ["What happens", "Expected", "How to reproduce", "Environment"]
+build = ["What happens", "Expected", "How to reproduce", "Environment", "Cause", "Decisions already made", "Steps", "Done when", "Out of scope"]
+checklist = ["Done when"]
+
+[[issue_type]]
+name = "Feature"
+file = ["Problem", "Proposed behavior", "Workaround today"]
+build = ["Problem", "Proposed behavior", "Workaround today", "Decisions already made", "Steps", "Done when", "Out of scope"]
+checklist = ["Done when"]
+
+[owner_task]
+file = ["Outcome", "Question", "Why it matters", "Recommended answer", "Done when"]
+build = ["Outcome", "Question", "Why it matters", "Recommended answer", "Done when"]
+checklist = ["Done when"]
+
+[[project]]
+key = "taskrock"
+title = "taskrock"
+kind = "delivery"
+number = 3
+repos = ["taskrock", "taskrock-plugins", "taskrock-sandbox"]
+
+[project.workflows]
+auto_add_sub_issues = true
+item_added = true
+item_closed = true
+pr_linked = true
+pr_merged = true
+auto_close_issue = true
+
+[[project]]
+key = "velnor"
+title = "Velnor"
+kind = "delivery"
+repos = ["velnor-new"]
+
+[project.workflows]
+auto_add_sub_issues = true
+item_added = true
+item_closed = true
+pr_linked = true
+pr_merged = true
+auto_close_issue = true
+
+[[project]]
+key = "tuiscotti"
+title = "tuiscotti"
+kind = "delivery"
+repos = ["tuiscotti"]
+
+[project.workflows]
+auto_add_sub_issues = true
+item_added = true
+item_closed = true
+pr_linked = true
+pr_merged = true
+auto_close_issue = true
+
+[[project]]
+key = "termpane"
+title = "termpane"
+kind = "delivery"
+repos = ["termpane"]
+
+[project.workflows]
+auto_add_sub_issues = true
+item_added = true
+item_closed = true
+pr_linked = true
+pr_merged = true
+auto_close_issue = true
+
+[[project]]
+key = "ruxel"
+title = "ruxel"
+kind = "delivery"
+repos = ["ruxel"]
+
+[project.workflows]
+auto_add_sub_issues = true
+item_added = true
+item_closed = true
+pr_linked = true
+pr_merged = true
+auto_close_issue = true
+
+[[project]]
+key = "termrock"
+title = "termrock"
+kind = "delivery"
+repos = ["termrock"]
+
+[project.workflows]
+auto_add_sub_issues = true
+item_added = true
+item_closed = true
+pr_linked = true
+pr_merged = true
+auto_close_issue = true
+
+[[project]]
+key = "schemalane"
+title = "schemalane"
+kind = "delivery"
+repos = ["schemalane"]
+
+[project.workflows]
+auto_add_sub_issues = true
+item_added = true
+item_closed = true
+pr_linked = true
+pr_merged = true
+auto_close_issue = true
+
+[[project]]
+key = "roadmap"
+title = "Roadmap"
+kind = "portfolio"
