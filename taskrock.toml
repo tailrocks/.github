@@ -200,7 +200,7 @@ auto_close_issue = true
 key = "velnor"
 title = "Velnor"
 kind = "delivery"
-repos = ["velnor-new"]
+repos = ["velnor-new", "homebrew-tap"]
 
 [project.workflows]
 auto_add_sub_issues = true
