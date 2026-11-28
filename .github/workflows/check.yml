@@ -17,5 +17,5 @@ jobs:
       - uses: dtolnay/rust-toolchain@683b588c487a69d01f6c6ddf40f036ff682cc2c8 # v1
         with:
           toolchain: stable
-      - run: cargo install --git https://github.com/tailrocks/taskrock --tag v0.2.0 taskrock
+      - run: cargo install --git https://github.com/tailrocks/taskrock --tag v0.5.2 taskrock
       - run: taskrock check taskrock.toml

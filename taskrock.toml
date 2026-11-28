@@ -169,6 +169,7 @@ use = "Tasks run in Muse Code."
 
 [review]
 max_rounds = 3
+codex = ["velnor-new", "taskrock"]
 
 [[issue_type]]
 name = "Initiative"
